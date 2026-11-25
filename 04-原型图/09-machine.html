@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>机具档案</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .mini-kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:12px}
+  .mini-kpi .k{background:#fff;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px}
+  .mini-kpi .k .t{font-size:12px;color:var(--c-text-3)}
+  .mini-kpi .k .v{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px}
+  .mname{display:flex;flex-direction:column;gap:2px}
+  .mname b{font-weight:600}
+  .mname span{font-size:12px;color:var(--c-text-3)}
+</style>
+</head>
+<body data-role="machine" data-nav="machine" data-crumb="档案与配置 / <b>机具档案</b>">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header class="topbar" id="topbar"></header>
+    <main class="content">
+      <div class="page-head">
+        <div><h1>机具档案</h1><div class="sub">管理农机主档、年检与保养状态；维修保养中或操作证过期的机具不参与派单。</div></div>
+        <div class="actions"><button class="btn ghost">导出当前筛选</button><button class="btn">新增机具</button></div>
+      </div>
+
+      <div class="mini-kpi">
+        <div class="k"><div class="t">在册机具</div><div class="v">38</div></div>
+        <div class="k"><div class="t">可派单</div><div class="v" style="color:var(--c-success)">29</div></div>
+        <div class="k"><div class="t">保养中</div><div class="v" style="color:var(--c-warn)">4</div></div>
+        <div class="k"><div class="t">维修中</div><div class="v" style="color:var(--c-danger)">3</div></div>
+        <div class="k"><div class="t">年检 30 天内到期</div><div class="v" style="color:var(--c-warn)">2</div></div>
+      </div>
+
+      <div class="card" style="padding:14px 16px;margin-bottom:12px">
+        <div class="filters">
+          <div class="field"><label>机具编号 / 型号</label><input class="inp w200" placeholder="如 MC-2023-018"></div>
+          <div class="field"><label>机具类型</label><div class="sel w220">全部类型</div></div>
+          <div class="field"><label>可作业类型</label><div class="sel w220">全部作业类型</div></div>
+          <div class="field"><label>所属区域</label><div class="sel w220">全部区域</div></div>
+          <div class="field"><label>可用状态</label><div class="sel w220">全部状态</div></div>
+          <div class="spacer"></div>
+          <div class="field"><label>&nbsp;</label><div style="display:flex;gap:8px"><button class="btn">查询</button><button class="btn ghost">重置</button></div></div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="min-width:180px">机具</th><th style="min-width:110px">类型</th><th class="r" style="min-width:90px">功率(kW)</th><th class="r" style="min-width:100px">作业宽度(m)</th><th style="min-width:150px">可作业类型</th><th class="r" style="min-width:90px">累计工时</th><th style="min-width:110px">下次保养</th><th style="min-width:110px">年检到期</th><th style="min-width:100px">状态</th><th class="op" style="min-width:150px">操作</th></tr></thead>
+          <tbody>
+            <tr><td><div class="mname"><b>鲁-01 麦赛福格森 MF2204</b><span>MC-2021-001 · 2021-04-18 购置</span></div></td><td>拖拉机</td><td class="r num">162</td><td class="r num">3.0</td><td>深耕整地 / 播种</td><td class="r num">1,284</td><td class="num">2026-11-20</td><td class="num">2027-03-12</td><td><span class="tag ok">可派单</span></td><td class="op"><a class="link">详情</a><a class="link">保养</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td><div class="mname"><b>鲁-07 约翰迪尔 6J-2104</b><span>MC-2022-007 · 2022-06-02 购置</span></div></td><td>拖拉机</td><td class="r num">154</td><td class="r num">2.6</td><td>深耕整地</td><td class="r num">1,905</td><td class="num">2026-12-05</td><td class="num">2026-11-28</td><td><span class="tag ok">可派单</span></td><td class="op"><a class="link">详情</a><a class="link">保养</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td><div class="mname"><b>苏-03 久保田 M7040</b><span>MC-2020-012 · 2020-09-11 购置</span></div></td><td>拖拉机</td><td class="r num">51</td><td class="r num">2.2</td><td>播种 / 运输</td><td class="r num">2,470</td><td class="num">2026-11-08</td><td class="num">2026-12-20</td><td><span class="tag warn">保养中</span></td><td class="op"><a class="link">详情</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td><div class="mname"><b>鲁-12 雷沃谷神 GM80</b><span>MC-2021-018 · 2021-08-30 购置</span></div></td><td>联合收割机</td><td class="r num">118</td><td class="r num">2.8</td><td>玉米收割 / 小麦收割</td><td class="r num">1,632</td><td class="num">2027-01-15</td><td class="num">2027-05-09</td><td><span class="tag ok">可派单</span></td><td class="op"><a class="link">详情</a><a class="link">保养</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td><div class="mname"><b>皖-05 大疆 T50</b><span>MC-2023-026 · 2023-03-14 购置</span></div></td><td>植保无人机</td><td class="r num">11</td><td class="r num">11.0</td><td>植保飞防</td><td class="r num">386</td><td class="num">2026-11-02</td><td class="num">2027-04-18</td><td><span class="tag ok">可派单</span></td><td class="op"><a class="link">详情</a><a class="link">保养</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td><div class="mname"><b>鲁-15 中联 4LZ-5</b><span>MC-2019-004 · 2019-07-06 购置</span></div></td><td>联合收割机</td><td class="r num">92</td><td class="r num">2.4</td><td>小麦收割</td><td class="r num">3,918</td><td class="num">2026-10-28</td><td class="num">2026-11-11</td><td><span class="tag bad">维修中</span></td><td class="op"><a class="link">详情</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td><div class="mname"><b>鲁-21 东方红 LX1504</b><span>MC-2024-031 · 2024-02-20 购置</span></div></td><td>拖拉机</td><td class="r num">110</td><td class="r num">2.5</td><td>深耕整地 / 运输</td><td class="r num">742</td><td class="num">2027-02-10</td><td class="num">2027-08-01</td><td><span class="tag ok">可派单</span></td><td class="op"><a class="link">详情</a><a class="link">保养</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td><div class="mname"><b>鲁-26 沃得锐龙 4LZ-6</b><span>MC-2022-014 · 2022-05-19 购置</span></div></td><td>联合收割机</td><td class="r num">103</td><td class="r num">2.6</td><td>玉米收割</td><td class="r num">1,204</td><td class="num">2026-12-22</td><td class="num">2027-06-14</td><td><span class="tag run">派单中</span></td><td class="op"><a class="link">详情</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+          </tbody>
+        </table>
+        <div class="tfoot"><span class="total">共 38 条 · 已选 0 条</span><div class="pager"><span>‹</span><span class="on">1</span><span>2</span><span>3</span><span>4</span><span>›</span><span style="border:0;min-width:auto;color:var(--c-text-3);padding:0 6px">10 条/页</span></div></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/shell.js"></script>
+<script>renderShell({name:'孙立群',role:'机务管理员',avatar:'孙'});</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>新建作业需求</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .form-card{max-width:960px}
+  .fr{display:grid;grid-template-columns:120px 1fr;gap:12px 16px;align-items:start;margin-bottom:14px}
+  .fr>label{font-size:14px;color:var(--c-text-2);text-align:right;line-height:34px}
+  .fr>label i{color:var(--c-danger);font-style:normal;margin-right:2px}
+  .fr .hint{font-size:12px;color:var(--c-text-3);margin-top:4px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .inp.wide{width:100%;max-width:520px}
+  .radios{display:flex;gap:16px;align-items:center;font-size:14px;height:34px}
+  .radios label{display:flex;align-items:center;gap:6px;color:var(--c-text)}
+  .calc{background:#F4F7F9;border:1px solid #DCE5EA;border-radius:6px;padding:12px 14px;font-size:13px;color:var(--c-text-2);line-height:24px;max-width:520px}
+  .calc b{color:var(--c-primary);font-variant-numeric:tabular-nums}
+  .foot{display:flex;gap:8px;padding-top:16px;border-top:1px solid var(--c-line);margin-top:20px}
+</style>
+</head>
+<body data-role="dispatch" data-nav="pool" data-crumb="业务受理 / 服务需求池 / <b>新建需求</b>">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header class="topbar" id="topbar"></header>
+    <main class="content">
+      <div class="page-head">
+        <div><h1>新建作业需求</h1><div class="sub">代农户录入，保存后进入「待报价」。标 <i style="color:var(--c-danger);font-style:normal">*</i> 为必填，面积由后端按地块复核。</div></div>
+        <div class="actions"><button class="btn ghost">返回列表</button><button class="btn ghost">保存草稿</button><button class="btn">提交需求</button></div>
+      </div>
+
+      <div class="card form-card">
+        <div class="section-t">需求基本信息</div>
+        <div class="two">
+          <div class="fr"><label><i>*</i>农户</label><div><div class="sel" style="width:100%">王建国（NH-0031）</div><div class="hint">按手机号或农户编号检索，选中后自动带出地块</div></div></div>
+          <div class="fr"><label><i>*</i>需求编号</label><div><input class="inp" style="width:100%;background:#F7F9FA" value="REQ-20261028-018" readonly><div class="hint">由后端按日期+序号生成，前端只读</div></div></div>
+        </div>
+        <div class="two">
+          <div class="fr"><label><i>*</i>地块</label><div><div class="sel" style="width:100%">北岭三号地（86.5 亩 · 小麦）</div></div></div>
+          <div class="fr"><label><i>*</i>申请面积</label><div><input class="inp num" style="width:100%" value="86.5"><div class="hint">不得超过地块确权面积 92.0 亩</div></div></div>
+        </div>
+        <div class="three">
+          <div class="fr"><label><i>*</i>服务类型</label><div><div class="sel w220">深耕整地</div></div></div>
+          <div class="fr"><label>作物</label><div><div class="sel w220">小麦</div></div></div>
+          <div class="fr"><label><i>*</i>希望作业日期</label><div><input class="inp" style="width:100%" value="2026-11-02"></div></div>
+        </div>
+        <div class="fr"><label>紧急度</label>
+          <div class="radios"><label><input type="radio" name="u" checked> 普通</label><label><input type="radio" name="u"> 加急（+15% 加急费，需调度确认）</label><label><input type="radio" name="u"> 预约排队</label></div>
+        </div>
+        <div class="fr"><label>特殊要求</label><div><textarea class="inp" style="width:100%;max-width:520px;height:76px;padding:8px 10px;line-height:22px">地头有灌溉管道，作业时需避开北侧 3 米；要求深耕 28cm 以上。</textarea></div></div>
+
+        <div class="section-t">地块与现场影像（上传组件，禁止填写外链）</div>
+        <div class="fr"><label>地块图片</label>
+          <div style="max-width:520px;width:100%">
+            <div class="upload"><div><b>点击或拖拽上传地块照片</b>支持 jpg/png，单张 ≤10MB，最多 6 张</div></div>
+            <div class="thumbs">
+              <div class="thumb">北岭三号地<span>beiling-01.jpg</span></div>
+              <div class="thumb">地头管道<span>pipeline-02.jpg</span></div>
+              <div class="thumb" style="border-style:dashed;background:#fff">＋</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-t">预估费用（后端按价目表试算）</div>
+        <div class="fr"><label>试算结果</label>
+          <div class="calc">
+            深耕整地基础价 <b>78.00</b> 元/亩 × 86.5 亩 = <b>6,747.00</b> 元<br>
+            路程附加费（<b>12.4</b> km，超出 10km 部分 3.5 元/km）= <b>8.40</b> 元<br>
+            加急费：未选择 &nbsp;|&nbsp; 预估合计 <b style="font-size:15px">¥6,755.40</b><br>
+            <span style="color:var(--c-text-3)">试算仅供农户参考，正式金额以调度员生成的报价单为准。</span>
+          </div>
+        </div>
+        <div class="foot"><button class="btn">提交需求</button><button class="btn ghost">保存草稿</button><button class="btn ghost">取消</button></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/shell.js"></script>
+<script>renderShell({name:'陈志远',role:'调度员',avatar:'陈'});</script>
+</body>
+</html>

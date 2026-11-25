@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>机具运营看板</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .content{padding:20px 24px}
+  .page-head{margin-bottom:12px;align-items:center}
+  .kpis{margin-bottom:12px}
+  .kpi{padding:14px 14px}
+  .kpi .val{font-size:24px;line-height:30px;margin-top:2px}
+  .grid3{gap:12px}
+  .chart-card{height:302px;padding:14px 16px}
+  .chart-body{padding-top:6px}
+  svg.line{width:100%;height:100%;display:block}
+  .axis{font-size:10px;fill:#8B99A5}
+  .hgroup{display:flex;flex-direction:column;gap:8px;width:100%;font-size:12px}
+  .hgroup .row{display:grid;grid-template-columns:52px 1fr 38px;gap:8px;align-items:center;color:#5C6B78}
+  .hgroup .row .bar2{height:10px;border-radius:2px;background:#19324A}
+  .hgroup .row.alt .bar2{background:#7C93A0}
+  .hgroup .row .v{text-align:right;font-variant-numeric:tabular-nums;color:#1F2A33}
+  .stack{display:flex;height:14px;border-radius:3px;overflow:hidden;width:100%;margin-top:6px}
+  .stack i{display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-style:normal}
+  .legend2{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:11px;color:#5C6B78;margin-top:10px}
+  .legend2 i{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:4px}
+</style>
+</head>
+<body data-role="dispatch" data-nav="dashboard" data-crumb="工作台 / <b>机具运营看板</b>">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header class="topbar" id="topbar"></header>
+    <main class="content">
+      <div class="page-head">
+        <div>
+          <h1>机具运营看板</h1>
+          <div class="sub">统计区间 2026-10-02 至 2026-10-31（最近 30 天）· 数据每 5 分钟刷新</div>
+        </div>
+        <div class="actions">
+          <div class="sel w220">最近 30 天</div>
+          <button class="btn ghost">导出统计</button>
+          <button class="btn">新建作业派单</button>
+        </div>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi"><div class="label">作业面积</div><div class="val">4,286<small>亩</small></div><div class="delta">↑ 12.4% 环比</div></div>
+        <div class="kpi" style="border-left-color:#356A7A"><div class="label">机具利用率</div><div class="val">71.8<small>%</small></div><div class="delta">↑ 4.2% 环比</div></div>
+        <div class="kpi" style="border-left-color:#2B7955"><div class="label">按时完工率</div><div class="val">96.4<small>%</small></div><div class="delta">↑ 1.1% 环比</div></div>
+        <div class="kpi" style="border-left-color:#456C7E"><div class="label">平均油耗</div><div class="val">2.31<small>L/亩</small></div><div class="delta dn">↑ 0.06 环比</div></div>
+        <div class="kpi" style="border-left-color:#9A6412"><div class="label">返工率</div><div class="val">2.7<small>%</small></div><div class="delta">↓ 0.6% 环比</div></div>
+        <div class="kpi" style="border-left-color:#B02A37"><div class="label">应收完成率</div><div class="val">88.2<small>%</small></div><div class="delta dn">↓ 3.5% 环比</div></div>
+      </div>
+
+      <div class="grid3">
+        <div class="chart-card">
+          <h3>月度作业面积趋势<span class="pill">亩 · 近 6 月</span></h3>
+          <div class="chart-body">
+            <svg class="line" viewBox="0 0 320 130" preserveAspectRatio="none">
+              <g stroke="#E9EEF1" stroke-width="1"><path d="M0 26H320M0 52H320M0 78H320M0 104H320"/></g>
+              <polyline points="8,92 62,78 116,84 170,58 224,44 292,30" fill="none" stroke="#19324A" stroke-width="2"/>
+              <polyline points="8,104 62,96 116,98 170,86 224,74 292,66" fill="none" stroke="#356A7A" stroke-width="1.6" stroke-dasharray="4 3"/>
+              <g fill="#19324A"><circle cx="8" cy="92" r="2.5"/><circle cx="62" cy="78" r="2.5"/><circle cx="116" cy="84" r="2.5"/><circle cx="170" cy="58" r="2.5"/><circle cx="224" cy="44" r="2.5"/><circle cx="292" cy="30" r="2.5"/></g>
+              <text class="axis" x="8" y="122">5月</text><text class="axis" x="62" y="122">6月</text><text class="axis" x="116" y="122">7月</text><text class="axis" x="166" y="122">8月</text><text class="axis" x="220" y="122">9月</text><text class="axis" x="280" y="122">10月</text>
+            </svg>
+          </div>
+          <div class="legend"><span><i style="background:#19324A"></i>作业面积</span><span><i style="background:#356A7A"></i>计划面积</span></div>
+        </div>
+
+        <div class="chart-card">
+          <h3>派单状态分布<span class="pill">共 68 单</span></h3>
+          <div class="chart-body" style="align-items:center">
+            <div class="donut-row">
+              <div class="donut" style="background:conic-gradient(#19324A 0 46%,#356A7A 46% 68%,#456C7E 68% 84%,#9A6412 84% 92%,#B02A37 92% 100%)">
+                <div class="mid"><b>68</b>总派单</div>
+              </div>
+              <div class="legend2" style="flex-direction:column;gap:6px;margin:0">
+                <span><i style="background:#19324A"></i>已完成 31</span>
+                <span><i style="background:#356A7A"></i>作业中 15</span>
+                <span><i style="background:#456C7E"></i>待排程 11</span>
+                <span><i style="background:#9A6412"></i>待验收 5</span>
+                <span><i style="background:#B02A37"></i>异常 6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>服务类型作业量<span class="pill">单</span></h3>
+          <div class="chart-body">
+            <div class="bars">
+              <div class="bar"><b>24</b><i style="height:78%"></i><b>耕地</b></div>
+              <div class="bar"><b>16</b><i style="height:52%"></i><b>播种</b></div>
+              <div class="bar"><b>13</b><i style="height:42%"></i><b>植保</b></div>
+              <div class="bar"><b>9</b><i style="height:29%"></i><b>收割</b></div>
+              <div class="bar"><b>6</b><i style="height:19%"></i><b>运输</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>机具利用率排行<span class="pill">TOP5</span></h3>
+          <div class="chart-body" style="align-items:center">
+            <div class="rank">
+              <div class="row"><span>鲁-01 麦赛</span><span class="meter"><i style="width:92%"></i></span><span class="v">92%</span></div>
+              <div class="row"><span>鲁-07 约翰</span><span class="meter"><i style="width:86%"></i></span><span class="v">86%</span></div>
+              <div class="row"><span>苏-03 久保田</span><span class="meter"><i style="width:74%"></i></span><span class="v">74%</span></div>
+              <div class="row"><span>鲁-12 雷沃</span><span class="meter"><i style="width:61%"></i></span><span class="v">61%</span></div>
+              <div class="row"><span>皖-05 大疆</span><span class="meter"><i style="width:48%"></i></span><span class="v">48%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>时效对比<span class="pill">小时</span></h3>
+          <div class="chart-body" style="align-items:center">
+            <div class="hgroup">
+              <div class="row"><span>报价响应</span><span class="bar2" style="width:38%"></span><span class="v">3.8</span></div>
+              <div class="row alt"><span>派单确认</span><span class="bar2" style="width:26%"></span><span class="v">2.6</span></div>
+              <div class="row"><span>到场时间</span><span class="bar2" style="width:76%"></span><span class="v">7.6</span></div>
+              <div class="row alt"><span>作业时长</span><span class="bar2" style="width:100%"></span><span class="v">10.0</span></div>
+              <div class="row"><span>验收确认</span><span class="bar2" style="width:58%"></span><span class="v">5.8</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>联合派单推荐结果<span class="pill">68 次计算</span></h3>
+          <div class="chart-body" style="flex-direction:column;justify-content:center;align-items:stretch;gap:0">
+            <div class="stack">
+              <i style="width:54%;background:#2B7955">推荐 37</i>
+              <i style="width:32%;background:#9A6412">可选 22</i>
+              <i style="width:14%;background:#B02A37">37%</i>
+            </div>
+            <div class="legend2">
+              <span><i style="background:#2B7955"></i>推荐 54.4%</span>
+              <span><i style="background:#9A6412"></i>可选 32.4%</span>
+              <span><i style="background:#B02A37"></i>不推荐 13.2%</span>
+            </div>
+            <div style="font-size:12px;color:#5C6B78;margin-top:8px">采纳率 <b style="color:#19324A">81.2%</b> · 人工调整率 <b style="color:#B02A37">9.6%</b></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/shell.js"></script>
+<script>renderShell({name:'陈志远',role:'调度员',avatar:'陈'});</script>
+</body>
+</html>

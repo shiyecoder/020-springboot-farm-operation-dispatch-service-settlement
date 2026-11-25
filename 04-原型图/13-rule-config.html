@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>派单规则配置</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .wrow{display:grid;grid-template-columns:150px 1fr 90px;gap:16px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--c-line)}
+  .wrow:last-of-type{border-bottom:0}
+  .wrow .n{font-size:14px}
+  .wrow .n span{display:block;font-size:12px;color:var(--c-text-3);margin-top:2px}
+  .track{height:6px;border-radius:3px;background:#E9EEF1;position:relative}
+  .track i{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--c-secondary)}
+  .track b{position:absolute;top:-5px;width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid var(--c-secondary);transform:translateX(-8px)}
+  .wrow .pct{display:flex;align-items:center;gap:4px;justify-content:flex-end}
+  .wrow .pct input{width:64px;height:32px;border:1px solid #C9D4DA;border-radius:6px;text-align:right;padding:0 8px;font-variant-numeric:tabular-nums;font-family:inherit;font-size:14px}
+  .total{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F4F7F9;border:1px solid #DCE5EA;border-radius:6px;margin-top:14px;font-size:14px}
+  .total b{font-size:20px;color:var(--c-success);font-variant-numeric:tabular-nums}
+  .thr{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .thr .it label{display:block;font-size:13px;color:var(--c-text-2);margin-bottom:6px}
+</style>
+</head>
+<body data-role="dispatch" data-nav="rule" data-crumb="档案与配置 / <b>派单规则配置</b>">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header class="topbar" id="topbar"></header>
+    <main class="content">
+      <div class="page-head">
+        <div><h1>派单规则配置 · 机具能力与成本联合派单</h1><div class="sub">权重合计必须等于 100%；保存后生成新版本并记录生效时间，只影响新计算或主动重算的单据。</div></div>
+        <div class="actions"><button class="btn ghost">恢复默认</button><button class="btn">保存并生成新版本</button></div>
+      </div>
+
+      <div class="split">
+        <div>
+          <div class="card">
+            <div class="card-h"><h2>评分权重</h2><span class="pill" style="margin-left:auto">当前版本 V3 · 2026-10-15 生效</span></div>
+            <div class="wrow"><div class="n">能力匹配<span>机型/作业宽度/机具类型是否满足</span></div><div class="track"><i style="width:25%"></i><b style="left:25%"></b></div><div class="pct"><input value="25"><span>%</span></div></div>
+            <div class="wrow"><div class="n">资质有效期<span>操作证剩余有效期天数</span></div><div class="track"><i style="width:15%"></i><b style="left:15%"></b></div><div class="pct"><input value="15"><span>%</span></div></div>
+            <div class="wrow"><div class="n">空闲时段<span>目标时段与已有派单重叠程度</span></div><div class="track"><i style="width:20%"></i><b style="left:20%"></b></div><div class="pct"><input value="20"><span>%</span></div></div>
+            <div class="wrow"><div class="n">到场距离<span>机具停放点到地块的距离</span></div><div class="track"><i style="width:15%"></i><b style="left:15%"></b></div><div class="pct"><input value="15"><span>%</span></div></div>
+            <div class="wrow"><div class="n">历史油耗<span>近 6 个月平均 L/亩</span></div><div class="track"><i style="width:10%"></i><b style="left:10%"></b></div><div class="pct"><input value="10"><span>%</span></div></div>
+            <div class="wrow"><div class="n">准时率<span>近 20 单按时到场比例</span></div><div class="track"><i style="width:15%"></i><b style="left:15%"></b></div><div class="pct"><input value="15"><span>%</span></div></div>
+            <div class="total"><span>权重合计</span><b>100%</b><span class="tag ok">校验通过</span><span class="dim" style="margin-left:auto">修改后需重新计算才会影响已有单据</span></div>
+          </div>
+
+          <div class="card" style="margin-top:16px">
+            <div class="card-h"><h2>阈值与等级</h2></div>
+            <div class="thr">
+              <div class="it"><label>推荐等级下限</label><input class="inp" value="80"></div>
+              <div class="it"><label>可选等级下限</label><input class="inp" value="60"></div>
+              <div class="it"><label>面积偏差阈值</label><input class="inp" value="3%"></div>
+            </div>
+            <div class="thr" style="margin-top:16px">
+              <div class="it"><label>证书预警天数</label><input class="inp" value="30"></div>
+              <div class="it"><label>准时率统计单量</label><input class="inp" value="20"></div>
+              <div class="it"><label>油耗统计月数</label><input class="inp" value="6"></div>
+            </div>
+            <div class="alert info" style="margin-top:14px"><span>数据缺失时该因子不参与计算，并按剩余权重归一化，同时在结果页提示「部分数据缺失，建议补录」。缺少能力或资质数据时直接判定不推荐。</span></div>
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="card" style="margin-bottom:12px">
+            <h2 style="margin-bottom:10px">版本记录</h2>
+            <div class="timeline">
+              <div class="tl now"><b>V3 · 当前</b><div class="meta">陈志远 · 2026-10-15 10:20:00 生效</div><p>提高「准时率」至 15%，降低「历史油耗」至 10%。</p></div>
+              <div class="tl"><b>V2</b><div class="meta">陈志远 · 2026-08-02 09:00:00 生效</div><p>新增「到场距离」因子，权重 15%。</p></div>
+              <div class="tl"><b>V1</b><div class="meta">系统初始化 · 2026-06-01 生效</div><p>初始 5 因子，权重均分。</p></div>
+            </div>
+          </div>
+          <div class="card">
+            <h2 style="margin-bottom:10px">近 30 天效果</h2>
+            <div class="kvlist" style="font-size:13px;line-height:26px">
+              <div><span>计算次数</span><b>68</b></div>
+              <div><span>推荐采纳率</span><b style="color:var(--c-success)">81.2%</b></div>
+              <div><span>人工调整率</span><b style="color:var(--c-danger)">9.6%</b></div>
+              <div><span>调整后按时完工率</span><b>96.4%</b></div>
+              <div><span>平均综合得分</span><b>78.6</b></div>
+            </div>
+            <div class="note" style="font-size:12px;color:var(--c-text-3);margin-top:8px">采纳率 = 未人工改派的计算次数 / 总计算次数。</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/shell.js"></script>
+<script>renderShell({name:'陈志远',role:'调度员',avatar:'陈'});</script>
+</body>
+</html>

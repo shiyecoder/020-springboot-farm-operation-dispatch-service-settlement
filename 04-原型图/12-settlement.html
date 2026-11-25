@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>结算管理</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .k4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
+  .k4 .k{background:#fff;border:1px solid var(--c-line);border-radius:8px;padding:12px 14px;border-left:3px solid var(--c-secondary)}
+  .k4 .t{font-size:12px;color:var(--c-text-3)}
+  .k4 .v{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px}
+  .k4 .d{font-size:12px;color:var(--c-text-2);margin-top:2px}
+</style>
+</head>
+<body data-role="finance" data-nav="settle" data-crumb="结算 / <b>结算管理</b>">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header class="topbar" id="topbar"></header>
+    <main class="content">
+      <div class="page-head">
+        <div><h1>结算管理</h1><div class="sub">按验收面积与附加费生成应收，登记线下收款；已结算订单不可改金额，减免与退款只记线下调整单。</div></div>
+        <div class="actions"><button class="btn ghost">导出对账单</button><button class="btn">批量登记收款</button></div>
+      </div>
+
+      <div class="k4">
+        <div class="k"><div class="t">本期应收</div><div class="v">¥186,420.60</div><div class="d">38 单 · 2026-10</div></div>
+        <div class="k" style="border-left-color:#2B7955"><div class="t">已收</div><div class="v" style="color:var(--c-success)">¥164,382.00</div><div class="d">88.2% 完成率</div></div>
+        <div class="k" style="border-left-color:#B02A37"><div class="t">未收</div><div class="v" style="color:var(--c-danger)">¥22,038.60</div><div class="d">9 单逾期超 15 天</div></div>
+        <div class="k" style="border-left-color:#9A6412"><div class="t">待结算</div><div class="v" style="color:var(--c-warn)">¥31,260.40</div><div class="d">7 单待验收</div></div>
+      </div>
+
+      <div class="card" style="padding:14px 16px;margin-bottom:12px">
+        <div class="filters">
+          <div class="field"><label>结算单号 / 农户</label><input class="inp w200" placeholder="如 ST-20261031-004"></div>
+          <div class="field"><label>收款状态</label><div class="sel w220">全部状态</div></div>
+          <div class="field"><label>作业月份</label><input class="inp w160" value="2026-10"></div>
+          <div class="field"><label>机具 / 农机手</label><input class="inp w200" placeholder="型号或姓名"></div>
+          <div class="spacer"></div>
+          <div class="field"><label>&nbsp;</label><div style="display:flex;gap:8px"><button class="btn">查询</button><button class="btn ghost">重置</button></div></div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="min-width:150px">结算单号</th><th style="min-width:110px">农户</th><th style="min-width:130px">地块</th><th style="min-width:90px">服务类型</th><th class="r" style="min-width:80px">验收面积</th><th class="r" style="min-width:110px">应收(元)</th><th class="r" style="min-width:110px">已收(元)</th><th style="min-width:110px">结算日期</th><th style="min-width:110px">收款状态</th><th class="op" style="min-width:160px">操作</th></tr></thead>
+          <tbody>
+            <tr><td class="no">ST-20261031-004</td><td>王建国</td><td>北岭三号地</td><td>深耕整地</td><td class="r num">89.6</td><td class="r num">6,860.20</td><td class="r num">6,860.20</td><td class="num">2026-10-31</td><td><span class="tag ok">已结清</span></td><td class="op"><a class="link">详情</a><a class="link">凭证</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">ST-20261030-003</td><td>恒丰家庭农场</td><td>恒丰西区 4 号</td><td>植保飞防</td><td class="r num">320.0</td><td class="r num">5,760.00</td><td class="r num">3,000.00</td><td class="num">2026-10-30</td><td><span class="tag warn">部分收款</span></td><td class="op"><a class="link">详情</a><a class="link">登记收款</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">ST-20261029-002</td><td>李秀兰</td><td>南洼东片</td><td>小麦播种</td><td class="r num">124.0</td><td class="r num">5,704.00</td><td class="r num">0.00</td><td class="num">2026-10-29</td><td><span class="tag bad">未收款</span></td><td class="op"><a class="link">详情</a><a class="link">登记收款</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">ST-20261028-001</td><td>孙德海</td><td>东坡连片</td><td>深耕整地</td><td class="r num">210.0</td><td class="r num">16,380.00</td><td class="r num">16,380.00</td><td class="num">2026-10-28</td><td><span class="tag ok">已结清</span></td><td class="op"><a class="link">详情</a><a class="link">凭证</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">ST-20261027-012</td><td>周文彬</td><td>南洼西片</td><td>小麦播种</td><td class="r num">96.0</td><td class="r num">4,416.00</td><td class="r num">4,416.00</td><td class="num">2026-10-27</td><td><span class="tag ok">已结清</span></td><td class="op"><a class="link">详情</a><a class="link">凭证</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">ST-20261026-011</td><td>赵明远</td><td>河堤北 2 号</td><td>玉米收割</td><td class="r num">46.8</td><td class="r num">4,620.60</td><td class="r num">2,000.00</td><td class="num">2026-10-26</td><td><span class="tag warn">部分收款</span></td><td class="op"><a class="link">详情</a><a class="link">登记收款</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">ST-20261025-010</td><td>刘桂芳</td><td>西岗 5 亩地</td><td>蔬菜植保</td><td class="r num">18.4</td><td class="r num">331.20</td><td class="r num">0.00</td><td class="num">2026-10-25</td><td><span class="tag bad">已逾期 6 天</span></td><td class="op"><a class="link">详情</a><a class="link">登记收款</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+          </tbody>
+        </table>
+        <div class="tfoot"><span class="total">共 38 条 · 合计应收 ¥186,420.60</span><div class="pager"><span>‹</span><span class="on">1</span><span>2</span><span>3</span><span>4</span><span>›</span><span style="border:0;min-width:auto;color:var(--c-text-3);padding:0 6px">10 条/页</span></div></div>
+      </div>
+
+      <div class="alert info" style="margin-top:12px"><span>线下收款凭证通过上传组件登记（银行回单/微信截图），系统只记录收款状态与凭证路径，不接入线上支付。农机手绩效按结算单完工量与质量评分计提，公式见「操作员工资」页。</span></div>
+    </main>
+  </div>
+</div>
+<script src="assets/shell.js"></script>
+<script>renderShell({name:'何美玲',role:'财务人员',avatar:'何'});</script>
+</body>
+</html>

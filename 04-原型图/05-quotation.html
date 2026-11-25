@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>报价确认</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .doc-head{display:flex;align-items:center;gap:16px;padding:14px 16px;background:#fff;border:1px solid var(--c-line);border-radius:8px;margin-bottom:16px}
+  .doc-head .id{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+  .doc-head .meta{font-size:12px;color:var(--c-text-3);margin-top:2px}
+  .doc-head .right{margin-left:auto;text-align:right;font-size:12px;color:var(--c-text-3)}
+  .doc-head .right b{display:block;font-size:20px;color:var(--c-primary);font-variant-numeric:tabular-nums}
+  .price-table td{padding:10px 12px}
+  .price-table tfoot td{background:#F7F9FA;font-weight:600}
+  .side .card{margin-bottom:12px}
+  .kvlist{font-size:13px;line-height:26px}
+  .kvlist div{display:flex;justify-content:space-between}
+  .kvlist span{color:var(--c-text-2)}
+  .kvlist b{font-variant-numeric:tabular-nums}
+  .note{font-size:12px;color:var(--c-text-3);line-height:20px;margin-top:8px}
+</style>
+</head>
+<body data-role="dispatch" data-nav="quote" data-crumb="业务受理 / <b>报价确认</b>">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header class="topbar" id="topbar"></header>
+    <main class="content">
+      <div class="page-head">
+        <div><h1>报价确认</h1><div class="sub">按价目表与附加项生成报价，农户确认后进入排程；退回需填写不少于 5 个字的原因。</div></div>
+        <div class="actions"><button class="btn ghost">上一单</button><button class="btn ghost">下一单</button></div>
+      </div>
+
+      <div class="doc-head">
+        <div><div class="id">QT-20261028-009</div><div class="meta">对应需求 REQ-20261028-017 · 王建国 · 北岭三号地</div></div>
+        <span class="tag warn">待农户确认</span>
+        <div class="right"><b>¥6,755.40</b>报价总额（含附加费）</div>
+      </div>
+
+      <div class="split">
+        <div>
+          <div class="card">
+            <div class="card-h"><h2>报价明细</h2><span class="pill" style="margin-left:auto">价目版本 V2026.09 · 2026-09-01 生效</span></div>
+            <table class="price-table">
+              <thead><tr><th style="min-width:140px">费用项</th><th style="min-width:220px">计价说明</th><th class="r" style="min-width:90px">数量</th><th class="r" style="min-width:100px">单价(元)</th><th class="r" style="min-width:100px">金额(元)</th></tr></thead>
+              <tbody>
+                <tr><td>深耕整地</td><td>小麦 · 计费单位 亩 · 基础价</td><td class="r num">86.5</td><td class="r num">78.00</td><td class="r num">6,747.00</td></tr>
+                <tr><td>路程附加费</td><td>机具停放点至地块 12.4km，超 10km 按 3.5 元/km</td><td class="r num">2.4</td><td class="r num">3.50</td><td class="r num">8.40</td></tr>
+                <tr><td>加急费</td><td>农户选择「普通」，不计收</td><td class="r num">—</td><td class="r num">—</td><td class="r num">0.00</td></tr>
+                <tr><td>返工预提</td><td>按合同条款 0%，本项目不适用</td><td class="r num">—</td><td class="r num">—</td><td class="r num">0.00</td></tr>
+              </tbody>
+              <tfoot><tr><td colspan="4" class="r">报价合计</td><td class="r num" style="color:var(--c-primary);font-size:15px">¥6,755.40</td></tr></tfoot>
+            </table>
+            <div class="note">金额由后端按 `service_price` + 路程 + 加急系数计算，前端不可编辑；已确认报价改价需重新生成版本，原版本留存。</div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h2>流转记录</h2></div>
+            <div class="timeline">
+              <div class="tl now"><b>生成报价</b><div class="meta">陈志远（调度员）· 2026-10-28 09:12:40</div><p>按价目 V2026.09 生成，含路程附加费 8.40 元。</p></div>
+              <div class="tl"><b>需求提交</b><div class="meta">王建国（农户）· 2026-10-28 08:41:05</div><p>提交深耕整地需求 86.5 亩，希望 11-02 作业，备注地头管道。</p></div>
+              <div class="tl"><b>需求受理</b><div class="meta">陈志远（调度员）· 2026-10-28 09:02:18</div><p>地块与面积复核通过，转入报价。</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="card">
+            <h2 style="margin-bottom:12px">单据摘要</h2>
+            <div class="kvlist">
+              <div><span>农户</span><b>王建国 / 138****6721</b></div>
+              <div><span>地块</span><b>北岭三号地</b></div>
+              <div><span>确权面积</span><b>92.0 亩</b></div>
+              <div><span>申请面积</span><b>86.5 亩</b></div>
+              <div><span>服务类型</span><b>深耕整地</b></div>
+              <div><span>作物</span><b>小麦</b></div>
+              <div><span>希望日期</span><b>2026-11-02</b></div>
+              <div><span>紧急度</span><b>普通</b></div>
+              <div><span>报价有效期</span><b>2026-11-04 前</b></div>
+            </div>
+          </div>
+          <div class="card">
+            <h2 style="margin-bottom:10px">操作</h2>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button class="btn">发送给农户确认</button>
+              <button class="btn ghost">修改报价（生成新版本）</button>
+              <button class="btn danger">退回需求</button>
+              <a class="link" style="text-align:center;margin-top:4px">查看该农户历史订单</a>
+            </div>
+            <div class="note">报价发出后 48 小时未确认自动失效，需重新生成。</div>
+          </div>
+          <div class="card" style="background:#FBF1DF;border-color:#F0DFBE">
+            <h3 style="color:#6E4A0C;margin-bottom:6px">能力预检提示</h3>
+            <div style="font-size:13px;line-height:22px;color:#6E4A0C">本单需 90 马力以上、作业宽度 ≥2.5m 的深松机；当前可用 3 台，其中 1 台操作证 2026-11-15 到期，排程时请注意。</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/shell.js"></script>
+<script>renderShell({name:'陈志远',role:'调度员',avatar:'陈'});</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>服务与价目</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .price-tabs{display:flex;gap:4px;border-bottom:1px solid var(--c-line);padding:0 4px}
+  .price-tabs a{padding:10px 14px;font-size:14px;color:var(--c-text-2);border-bottom:2px solid transparent;margin-bottom:-1px}
+  .price-tabs a.on{color:var(--c-primary);border-bottom-color:var(--c-primary);font-weight:600}
+  .calcbox{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  .calcbox .b{background:#F4F7F9;border:1px solid #DCE5EA;border-radius:6px;padding:10px 12px;font-size:13px;color:var(--c-text-2);line-height:22px}
+  .calcbox .b b{color:var(--c-primary);font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body data-role="dispatch" data-nav="price" data-crumb="档案与配置 / <b>服务与价目</b>">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header class="topbar" id="topbar"></header>
+    <main class="content">
+      <div class="page-head">
+        <div><h1>服务与价目</h1><div class="sub">按作业类型 + 作物 + 计费单位配置基础价、路程附加费与加急系数；改价生成新版本，历史订单金额不变。</div></div>
+        <div class="actions"><button class="btn ghost">价目版本记录</button><button class="btn">新增价目</button></div>
+      </div>
+
+      <div class="table-wrap">
+        <div class="price-tabs"><a class="on" href="#">全部</a><a href="#">耕地</a><a href="#">播种</a><a href="#">植保</a><a href="#">收割</a><a href="#">运输</a></div>
+        <table>
+          <thead><tr><th style="min-width:140px">作业类型</th><th style="min-width:100px">适用作物</th><th style="min-width:100px">计费单位</th><th class="r" style="min-width:110px">基础价(元)</th><th class="r" style="min-width:120px">路程附加(元/km)</th><th class="r" style="min-width:100px">加急系数</th><th style="min-width:110px">生效日期</th><th style="min-width:90px">版本</th><th style="min-width:90px">状态</th><th class="op" style="min-width:120px">操作</th></tr></thead>
+          <tbody>
+            <tr><td><b>深耕整地</b></td><td>小麦 / 玉米</td><td>亩</td><td class="r num">78.00</td><td class="r num">3.50</td><td class="r num">1.15</td><td class="num">2026-09-01</td><td><span class="pill">V2026.09</span></td><td><span class="tag ok">启用</span></td><td class="op"><a class="link">编辑</a><a class="link" style="color:var(--c-text-2)">停用</a></td></tr>
+            <tr><td><b>旋耕整地</b></td><td>小麦 / 蔬菜</td><td>亩</td><td class="r num">52.00</td><td class="r num">3.50</td><td class="r num">1.15</td><td class="num">2026-09-01</td><td><span class="pill">V2026.09</span></td><td><span class="tag ok">启用</span></td><td class="op"><a class="link">编辑</a><a class="link" style="color:var(--c-text-2)">停用</a></td></tr>
+            <tr><td><b>小麦播种</b></td><td>小麦</td><td>亩</td><td class="r num">46.00</td><td class="r num">3.50</td><td class="r num">1.20</td><td class="num">2026-09-01</td><td><span class="pill">V2026.09</span></td><td><span class="tag ok">启用</span></td><td class="op"><a class="link">编辑</a><a class="link" style="color:var(--c-text-2)">停用</a></td></tr>
+            <tr><td><b>植保飞防</b></td><td>玉米 / 果树</td><td>亩</td><td class="r num">18.00</td><td class="r num">1.20</td><td class="r num">1.25</td><td class="num">2026-09-01</td><td><span class="pill">V2026.09</span></td><td><span class="tag ok">启用</span></td><td class="op"><a class="link">编辑</a><a class="link" style="color:var(--c-text-2)">停用</a></td></tr>
+            <tr><td><b>玉米收割</b></td><td>玉米</td><td>亩</td><td class="r num">96.00</td><td class="r num">4.20</td><td class="r num">1.30</td><td class="num">2026-09-01</td><td><span class="pill">V2026.09</span></td><td><span class="tag ok">启用</span></td><td class="op"><a class="link">编辑</a><a class="link" style="color:var(--c-text-2)">停用</a></td></tr>
+            <tr><td><b>小麦收割</b></td><td>小麦</td><td>亩</td><td class="r num">82.00</td><td class="r num">4.20</td><td class="r num">1.30</td><td class="num">2026-09-01</td><td><span class="pill">V2026.09</span></td><td><span class="tag ok">启用</span></td><td class="op"><a class="link">编辑</a><a class="link" style="color:var(--c-text-2)">停用</a></td></tr>
+            <tr><td><b>农资运输</b></td><td>不限</td><td>吨·公里</td><td class="r num">1.80</td><td class="r num">—</td><td class="r num">1.10</td><td class="num">2026-09-01</td><td><span class="pill">V2026.09</span></td><td><span class="tag">停用</span></td><td class="op"><a class="link">编辑</a><a class="link">启用</a></td></tr>
+          </tbody>
+        </table>
+        <div class="tfoot"><span class="total">共 7 条 · 启用 6 条</span><div class="pager"><span>‹</span><span class="on">1</span><span>›</span><span style="border:0;min-width:auto;color:var(--c-text-3);padding:0 6px">10 条/页</span></div></div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-h"><h2>计价规则说明</h2><span class="pill" style="margin-left:auto">由后端 QuotationService 统一计算，前端只读</span></div>
+        <div class="calcbox">
+          <div class="b">金额 = 基础价 × 面积 × 加急系数 + 路程附加费<br>路程附加费 = max(距离 − 10, 0) × 单价（10km 内免收）</div>
+          <div class="b">示例：深耕整地 86.5 亩，12.4km，普通紧急度<br>= <b>78.00 × 86.5</b> + <b>2.4 × 3.50</b> = <b>6,755.40 元</b></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/shell.js"></script>
+<script>renderShell({name:'陈志远',role:'调度员',avatar:'陈'});</script>
+</body>
+</html>

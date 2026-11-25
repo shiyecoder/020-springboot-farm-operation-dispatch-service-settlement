@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>服务需求池</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .sum{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
+  .sum .card{padding:12px 16px;display:flex;align-items:center;gap:12px}
+  .sum .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+  .sum .t{font-size:12px;color:var(--c-text-3)}
+  .tabs{display:flex;gap:4px;margin-bottom:0;border-bottom:1px solid var(--c-line);padding:0 4px}
+  .tabs a{padding:10px 14px;font-size:14px;color:var(--c-text-2);border-bottom:2px solid transparent;margin-bottom:-1px}
+  .tabs a.on{color:var(--c-primary);border-bottom-color:var(--c-primary);font-weight:600}
+  .tabs a span{font-size:12px;color:var(--c-text-3);margin-left:4px}
+</style>
+</head>
+<body data-role="dispatch" data-nav="pool" data-crumb="业务受理 / <b>服务需求池</b>">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header class="topbar" id="topbar"></header>
+    <main class="content">
+      <div class="page-head">
+        <div><h1>服务需求池</h1><div class="sub">农户提交的作业需求统一在此受理，审核后进入报价环节。共 26 条待处理。</div></div>
+        <div class="actions"><button class="btn ghost">高级筛选</button><button class="btn">代农户录入需求</button></div>
+      </div>
+
+      <div class="sum">
+        <div class="card"><div><div class="n">26</div><div class="t">待报价</div></div><span class="tag warn" style="margin-left:auto">其中加急 4</span></div>
+        <div class="card"><div><div class="n">11</div><div class="t">待农户确认报价</div></div><span class="tag" style="margin-left:auto">超 24h 3 条</span></div>
+        <div class="card"><div><div class="n">9</div><div class="t">待排程</div></div><span class="tag ok" style="margin-left:auto">能力已校验</span></div>
+        <div class="card"><div><div class="n">1,286<span style="font-size:13px">亩</span></div><div class="t">合计申请面积</div></div><span class="tag" style="margin-left:auto">覆盖 5 类服务</span></div>
+      </div>
+
+      <div class="card" style="padding:14px 16px;margin-bottom:12px">
+        <div class="filters">
+          <div class="field"><label>需求编号 / 农户</label><input class="inp w200" placeholder="如 REQ-20261028-017"></div>
+          <div class="field"><label>服务类型</label><div class="sel w220">全部服务类型</div></div>
+          <div class="field"><label>作物</label><div class="sel w220">全部作物</div></div>
+          <div class="field"><label>希望作业日期</label><input class="inp w160" value="2026-10-20 ~ 2026-11-05"></div>
+          <div class="field"><label>紧急度</label><div class="sel w220">全部</div></div>
+          <div class="spacer"></div>
+          <div class="field"><label>&nbsp;</label><div style="display:flex;gap:8px"><button class="btn">查询</button><button class="btn ghost">重置</button></div></div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <div class="tabs">
+          <a class="on" href="#">全部<span>26</span></a><a href="#">加急<span>4</span></a><a href="#">已退回<span>2</span></a><a href="#">我负责<span>8</span></a>
+        </div>
+        <table>
+          <thead><tr>
+            <th style="min-width:150px">需求编号</th><th style="min-width:110px">农户</th><th style="min-width:120px">地块</th>
+            <th style="min-width:90px">服务类型</th><th style="min-width:80px">作物</th><th class="r" style="min-width:80px">面积(亩)</th>
+            <th style="min-width:110px">希望日期</th><th style="min-width:80px">紧急度</th><th style="min-width:100px">状态</th><th class="op" style="min-width:170px">操作</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="no">REQ-20261028-017</td><td>王建国</td><td>北岭三号地</td><td>深耕整地</td><td>小麦</td><td class="r num">86.5</td><td class="num">2026-11-02</td><td><span class="tag bad">加急</span></td><td><span class="tag">待报价</span></td><td class="op"><a class="link">详情</a><a class="link">生成报价</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">REQ-20261028-016</td><td>李秀兰</td><td>南洼东片</td><td>小麦播种</td><td>小麦</td><td class="r num">124.0</td><td class="num">2026-11-03</td><td><span class="tag">普通</span></td><td><span class="tag">待报价</span></td><td class="op"><a class="link">详情</a><a class="link">生成报价</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">REQ-20261027-015</td><td>恒丰家庭农场</td><td>恒丰西区 4 号</td><td>植保飞防</td><td>玉米</td><td class="r num">320.0</td><td class="num">2026-10-31</td><td><span class="tag bad">加急</span></td><td><span class="tag warn">待确认</span></td><td class="op"><a class="link">详情</a><a class="link">催确认</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">REQ-20261027-014</td><td>赵明远</td><td>河堤北 2 号</td><td>玉米收割</td><td>玉米</td><td class="r num">46.8</td><td class="num">2026-11-01</td><td><span class="tag">普通</span></td><td><span class="tag warn">待确认</span></td><td class="op"><a class="link">详情</a><a class="link">催确认</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">REQ-20261026-013</td><td>孙德海</td><td>东坡连片</td><td>深耕整地</td><td>小麦</td><td class="r num">210.0</td><td class="num">2026-11-04</td><td><span class="tag">普通</span></td><td><span class="tag run">待排程</span></td><td class="op"><a class="link">详情</a><a class="link">去排程</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">REQ-20261026-012</td><td>刘桂芳</td><td>西岗 5 亩地</td><td>蔬菜植保</td><td>白菜</td><td class="r num">18.4</td><td class="num">2026-10-30</td><td><span class="tag bad">加急</span></td><td><span class="tag run">待排程</span></td><td class="op"><a class="link">详情</a><a class="link">去排程</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">REQ-20261025-011</td><td>周文彬</td><td>南洼西片</td><td>小麦播种</td><td>小麦</td><td class="r num">96.0</td><td class="num">2026-10-29</td><td><span class="tag">普通</span></td><td><span class="tag ok">已完成</span></td><td class="op"><a class="link">详情</a><a class="link">查看结算</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+            <tr><td class="no">REQ-20261025-010</td><td>吴春梅</td><td>果园东区</td><td>植保飞防</td><td>果树</td><td class="r num">54.2</td><td class="num">2026-10-28</td><td><span class="tag">普通</span></td><td><span class="tag bad">已退回</span></td><td class="op"><a class="link">详情</a><a class="link">重新提交</a><a class="link" style="color:var(--c-text-2)">更多</a></td></tr>
+          </tbody>
+        </table>
+        <div class="tfoot">
+          <span class="total">共 26 条 · 已选 0 条</span>
+          <div class="pager"><span>‹</span><span class="on">1</span><span>2</span><span>3</span><span>›</span>
+            <span style="border:0;min-width:auto;color:var(--c-text-3);padding:0 6px">10 条/页</span></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/shell.js"></script>
+<script>renderShell({name:'陈志远',role:'调度员',avatar:'陈'});</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>农户服务大厅</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  body{background:#F7F9FA}
+  .portal-nav .avatar2{width:32px;height:32px;border-radius:50%;background:#356A7A;color:#fff;display:grid;place-items:center;font-size:12px}
+  .portal-nav .right{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--c-text-2)}
+  .quick2{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+  .quick2 a{background:#fff;border:1px solid var(--c-line);border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:12px;color:var(--c-text)}
+  .quick2 a:hover{border-color:#9FC1CC;background:#FAFCFD}
+  .quick2 .ic{width:34px;height:34px;border-radius:8px;background:#EDF2F5;color:var(--c-primary);display:grid;place-items:center;font-size:14px;font-weight:600}
+  .quick2 b{display:block;font-size:14px}
+  .quick2 span{font-size:12px;color:var(--c-text-3)}
+  .cols{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start}
+  .st{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--c-text-3);margin-top:4px}
+  .sidebox{background:#fff;border:1px solid var(--c-line);border-radius:8px;padding:16px;margin-bottom:12px}
+  .sidebox h3{font-size:14px;margin-bottom:10px}
+  .step2{display:flex;gap:10px;font-size:13px;color:var(--c-text-2);line-height:22px;margin-bottom:10px}
+  .step2 i{width:20px;height:20px;border-radius:50%;background:#EDF2F5;color:var(--c-text-2);display:grid;place-items:center;font-size:11px;font-style:normal;flex:0 0 20px}
+  .step2.done i{background:#E4F0EA;color:#2B7955}
+</style>
+</head>
+<body data-role="farmer" data-nav="portal">
+<header class="portal-nav">
+  <div class="brand2"><div class="logo">农</div>红旗农机合作社 · 农户服务大厅</div>
+  <ul><li class="on">服务大厅</li><li>我的需求</li><li>待我验收</li><li>结算单</li></ul>
+  <div class="right"><span>消息</span><span class="avatar2">王</span><span>王建国</span></div>
+</header>
+
+<div class="portal-body">
+  <div class="hero">
+    <div>
+      <div class="t">下午好，王建国</div>
+      <div class="d">您有 1 单待验收、1 份报价待确认。作业完成并确认后系统自动生成结算单。</div>
+    </div>
+    <div class="stats">
+      <div><b>3</b><span>进行中需求</span></div>
+      <div><b>86.5</b><span>待作业面积(亩)</span></div>
+      <div><b>¥6,860.20</b><span>待结算金额</span></div>
+    </div>
+  </div>
+
+  <div class="quick2">
+    <a href="04-request-new.html"><div class="ic">＋</div><div><b>提交作业需求</b><span>耕地/播种/植保/收割</span></div></a>
+    <a href="08-acceptance.html"><div class="ic">✓</div><div><b>验收作业</b><span>1 单待确认面积</span></div></a>
+    <a href="05-quotation.html"><div class="ic">¥</div><div><b>查看报价</b><span>1 份待确认</span></div></a>
+    <a href="#"><div class="ic">⌂</div><div><b>管理地块</b><span>4 块确权地块</span></div></a>
+  </div>
+
+  <div class="cols">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><h2 style="font-size:16px">我的需求</h2><span class="pill">进行中 3</span><a class="link" style="margin-left:auto">全部需求 ›</a></div>
+
+      <div class="list-card">
+        <div class="thumb2">北岭三号地<br>86.5 亩</div>
+        <div class="b">
+          <h3>深耕整地 · 北岭三号地 <span class="tag ok" style="margin-left:6px">已完成</span></h3>
+          <div class="kv"><span>需求 <b>REQ-20261028-017</b></span><span>希望日期 <b>2026-11-02</b></span><span>报价 <b>¥6,755.40</b></span></div>
+          <div class="st">机具 鲁-01 麦赛福格森 · 农机手 张国庆 · 验收面积 89.6 亩（+3.58%，已确认）</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px"><button class="btn sm">去验收</button><button class="btn ghost sm">详情</button></div>
+      </div>
+
+      <div class="list-card">
+        <div class="thumb2">南洼东片<br>124.0 亩</div>
+        <div class="b">
+          <h3>小麦播种 · 南洼东片 <span class="tag warn" style="margin-left:6px">待确认报价</span></h3>
+          <div class="kv"><span>需求 <b>REQ-20261028-016</b></span><span>希望日期 <b>2026-11-03</b></span><span>报价 <b>¥5,704.00</b></span></div>
+          <div class="st">报价 QT-20261028-010 于 10-28 10:12 发出，48 小时内未确认将失效。</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px"><button class="btn sm">确认报价</button><button class="btn ghost sm">退回</button></div>
+      </div>
+
+      <div class="list-card">
+        <div class="thumb2">东坡连片<br>210.0 亩</div>
+        <div class="b">
+          <h3>深耕整地 · 东坡连片 <span class="tag run" style="margin-left:6px">待排程</span></h3>
+          <div class="kv"><span>需求 <b>REQ-20261026-013</b></span><span>希望日期 <b>2026-11-04</b></span><span>报价 <b>¥16,380.00</b></span></div>
+          <div class="st">报价已确认，调度员正在匹配机具与农机手。</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px"><button class="btn ghost sm">查看进度</button></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sidebox">
+        <h3>作业进度</h3>
+        <div class="step2 done"><i>1</i><div>需求提交 <span class="dim">10-28 08:41</span></div></div>
+        <div class="step2 done"><i>2</i><div>报价确认 <span class="dim">10-28 09:46</span></div></div>
+        <div class="step2 done"><i>3</i><div>派单到场 <span class="dim">11-02 07:52</span></div></div>
+        <div class="step2 done"><i>4</i><div>作业完工 <span class="dim">11-02 18:41</span></div></div>
+        <div class="step2"><i>5</i><div>验收确认 <span class="dim">待您操作</span></div></div>
+        <div class="step2"><i>6</i><div>结算收款 <span class="dim">验收后生成</span></div></div>
+      </div>
+      <div class="sidebox">
+        <h3>我的地块</h3>
+        <div class="kv" style="display:block;line-height:26px;font-size:13px">
+          北岭三号地 · 小麦 · 92.0 亩<br>
+          南洼东片 · 小麦 · 130.0 亩<br>
+          东坡连片 · 小麦 · 215.0 亩<br>
+          西岗小片 · 白菜 · 18.4 亩
+        </div>
+        <button class="btn ghost sm" style="margin-top:10px">新增地块</button>
+      </div>
+      <div class="sidebox" style="background:#FBF7EC;border-color:#F0DFBE">
+        <h3 style="color:#6E4A0C">服务提示</h3>
+        <div style="font-size:13px;line-height:22px;color:#6E4A0C">11 月上旬为小麦播种高峰，建议提前 3 天提交需求；勾选「加急」将加收 15%–30% 加急费。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>登录 · 农机作业派单与服务结算管理系统</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  body{background:#0E1E2C;overflow:hidden}
+  .wrap{display:grid;grid-template-columns:1.15fr .85fr;height:100vh}
+  /* 左侧品牌区：黄昏田地等高线，无插画堆砌，只有低速渐变与等高线 */
+  .visual{position:relative;overflow:hidden;background:linear-gradient(160deg,#19324A 0%,#22485C 48%,#356A7A 100%);color:#fff;padding:56px 64px;display:flex;flex-direction:column}
+  .visual .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px}
+  .brand{display:flex;align-items:center;gap:12px;position:relative;z-index:2}
+  .brand .logo{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);display:grid;place-items:center;font-weight:700;font-size:15px}
+  .brand b{font-size:16px;letter-spacing:.5px}
+  .brand span{display:block;font-size:11px;letter-spacing:2.4px;color:rgba(255,255,255,.5);margin-top:2px}
+  .visual h1{font-size:34px;line-height:46px;font-weight:600;margin-top:auto;position:relative;z-index:2;letter-spacing:.5px}
+  .visual h1 em{font-style:normal;color:#9FCBD8}
+  .visual p{margin-top:14px;font-size:14px;line-height:24px;color:rgba(255,255,255,.72);max-width:440px;position:relative;z-index:2}
+  .facts{display:flex;gap:40px;margin-top:36px;position:relative;z-index:2}
+  .facts b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+  .facts span{font-size:12px;color:rgba(255,255,255,.55)}
+  .fieldlines{position:absolute;left:-6%;right:-6%;bottom:-8%;height:44%;z-index:1;opacity:.5}
+  .panel{background:#fff;display:flex;align-items:center;justify-content:center;padding:40px}
+  .form{width:344px}
+  .form .k{font-size:12px;letter-spacing:2px;color:#8B99A5}
+  .form h2{font-size:24px;line-height:34px;margin:10px 0 6px;color:#19324A}
+  .form .tip{font-size:13px;color:#5C6B78;margin-bottom:26px}
+  .form label{display:block;font-size:13px;color:#5C6B78;margin:16px 0 6px}
+  .form .inp{width:100%;height:42px;border-radius:6px}
+  .form .row{display:flex;align-items:center;justify-content:space-between;margin-top:14px;font-size:13px;color:#5C6B78}
+  .form .row a{font-size:13px}
+  .submit{width:100%;height:44px;margin-top:22px;font-size:15px;border-radius:6px;justify-content:center}
+  .quick{margin-top:22px;padding-top:18px;border-top:1px solid #E3E8EC;font-size:12px;color:#8B99A5;line-height:22px}
+  .quick b{color:#456C7E;font-weight:600}
+  .err{display:none}
+  .err.show{display:block;margin-top:10px;font-size:12px;color:#B02A37}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="visual">
+    <div class="grid"></div>
+    <svg class="fieldlines" viewBox="0 0 800 400" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-20 300 Q200 210 420 262 T820 214" fill="none" stroke="rgba(159,203,216,.45)" stroke-width="1.4"/>
+      <path d="M-20 330 Q200 240 420 292 T820 244" fill="none" stroke="rgba(159,203,216,.30)" stroke-width="1.2"/>
+      <path d="M-20 360 Q200 270 420 322 T820 274" fill="none" stroke="rgba(159,203,216,.20)" stroke-width="1.2"/>
+      <path d="M-20 390 Q200 300 420 352 T820 304" fill="none" stroke="rgba(159,203,216,.12)" stroke-width="1.2"/>
+      <g stroke="rgba(255,255,255,.14)" stroke-width="1">
+        <path d="M60 400 V268 M120 400 V282 M180 400 V296 M240 400 V308 M300 400 V318 M360 400 V324 M420 400 V318 M480 400 V306 M540 400 V292 M600 400 V276 M660 400 V260 M720 400 V246"/>
+      </g>
+    </svg>
+    <div class="brand">
+      <div class="logo">农</div>
+      <div><b>农机作业调度平台</b><span>AGRI MACHINERY DISPATCH</span></div>
+    </div>
+    <h1>把每一台机具，<br>派到<em>真正合适的地块</em>。</h1>
+    <p>作业需求受理、能力校验排程、现场作业留痕、验收与线下结算，一条链路闭环。合作社调度不再靠电话和纸单。</p>
+    <div class="facts">
+      <div><b>38</b><span>在册机具</span></div>
+      <div><b>26</b><span>持证农机手</span></div>
+      <div><b>96.4%</b><span>按时完工率</span></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <form class="form" onsubmit="event.preventDefault();document.querySelector('.err').classList.add('show')">
+      <div class="k">SIGN IN</div>
+      <h2>账号登录</h2>
+      <div class="tip">请使用合作社分配的账号，登录后按角色进入对应工作台。</div>
+      <label>账号</label>
+      <input class="inp" placeholder="手机号 / 工号 / 农户编号" value="admin">
+      <label>密码</label>
+      <input class="inp" type="password" placeholder="请输入登录密码" value="admin123">
+      <div class="row"><label style="margin:0"><input type="checkbox" checked> 记住账号</label><a href="#">忘记密码？</a></div>
+      <button class="btn submit">进入系统</button>
+      <div class="err">账号或密码错误，连续 5 次失败将锁定 15 分钟。</div>
+      <div class="quick">
+        演示账号：<b>admin / admin123</b>（管理员）· <b>diaodu01 / 123456</b>（调度员）· <b>nonghu01 / 123456</b>（农户）· <b>jishou01 / 123456</b>（农机手）
+      </div>
+    </form>
+  </section>
+</div>
+</body>
+</html>

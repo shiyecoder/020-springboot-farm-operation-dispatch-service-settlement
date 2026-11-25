@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>验收结算单</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .doc-head{display:flex;align-items:center;gap:16px;padding:14px 16px;background:#fff;border:1px solid var(--c-line);border-radius:8px;margin-bottom:16px}
+  .doc-head .id{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+  .doc-head .meta{font-size:12px;color:var(--c-text-3);margin-top:2px}
+  .doc-head .right{margin-left:auto;text-align:right;font-size:12px;color:var(--c-text-3)}
+  .doc-head .right b{display:block;font-size:20px;color:var(--c-primary);font-variant-numeric:tabular-nums}
+  .eval{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:12px}
+  .ev{border:1px solid var(--c-line);border-radius:6px;padding:10px;background:#fff}
+  .ev .t{font-size:12px;color:var(--c-text-3)}
+  .ev .s{font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;margin:3px 0}
+  .ev .d{font-size:11px;color:var(--c-text-2);line-height:16px}
+  .res{display:flex;align-items:center;gap:20px;padding:14px 16px;border:1px solid #D5E4DA;background:#F4FAF6;border-radius:8px;margin-bottom:12px}
+  .res .grade{font-size:13px;color:var(--c-text-2)}
+  .res .grade b{display:block;font-size:24px;color:var(--c-success)}
+  .res .exp{font-size:13px;line-height:22px;color:#26543C}
+  .amount{display:flex;align-items:baseline;gap:10px;justify-content:flex-end;font-size:13px;color:var(--c-text-2)}
+  .amount b{font-size:26px;color:var(--c-primary);font-variant-numeric:tabular-nums}
+  .mini th,.mini td{padding:9px 12px}
+</style>
+</head>
+<body data-role="dispatch" data-nav="accept" data-crumb="业务受理 / <b>验收结算单</b>">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <header class="topbar" id="topbar"></header>
+    <main class="content">
+      <div class="page-head">
+        <div><h1>验收结算单</h1><div class="sub">农户确认作业面积与质量后生成应收；本页同时展示联合派单的计算依据与人工调整记录。</div></div>
+        <div class="actions"><button class="btn ghost">打印</button><button class="btn ghost">导出 PDF</button><button class="btn">确认验收并生成应收</button></div>
+      </div>
+
+      <div class="doc-head">
+        <div><div class="id">ST-20261031-004</div><div class="meta">派单 DO-20261028-021 · 需求 REQ-20261028-017 · 王建国 · 北岭三号地</div></div>
+        <span class="tag warn">待验收</span>
+        <div class="right"><b>¥6,860.20</b>应收（含面积变更后调整）</div>
+      </div>
+
+      <div class="alert" style="margin-bottom:12px"><span><b>面积变更需二次确认：</b>报价面积 86.5 亩，验收面积 89.6 亩，偏差 +3.58% 超过 3% 阈值。农户已确认（2026-10-31 16:22），追加 3.1 亩 × 78.00 元 = 241.80 元，并抵扣原路程附加费误差 0.00 元。</span></div>
+
+      <div class="split">
+        <div>
+          <div class="card" style="margin-bottom:12px">
+            <div class="card-h"><h2>作业与验收信息</h2><span class="pill" style="margin-left:auto">时间统一 yyyy-MM-dd HH:mm:ss</span></div>
+            <div class="dl">
+              <div class="it"><span class="k">机具</span><span class="v">鲁-01 麦赛福格森 MF2204</span></div>
+              <div class="it"><span class="k">农机手</span><span class="v">张国庆（OP-007）</span></div>
+              <div class="it"><span class="k">作业深度</span><span class="v">实测 29.4 cm · 达标</span></div>
+              <div class="it"><span class="k">报价面积</span><span class="v num">86.5 亩</span></div>
+              <div class="it"><span class="k">验收面积</span><span class="v num">89.6 亩（+3.58%）</span></div>
+              <div class="it"><span class="k">油耗</span><span class="v num">208.5 L / 2.33 L·亩</span></div>
+              <div class="it"><span class="k">开工时间</span><span class="v num">2026-11-02 08:06:22</span></div>
+              <div class="it"><span class="k">完工时间</span><span class="v num">2026-11-02 18:41:07</span></div>
+              <div class="it"><span class="k">作业质量评分</span><span class="v">4.6 / 5（农户评价）</span></div>
+            </div>
+            <div class="thumbs" style="margin-top:14px">
+              <div class="thumb">作业前<span>01_before.jpg</span></div>
+              <div class="thumb">作业中<span>02_doing.jpg</span></div>
+              <div class="thumb">完工后<span>03_after.jpg</span></div>
+              <div class="thumb">深度抽检<span>04_depth.jpg</span></div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:12px">
+            <div class="card-h"><h2>机具能力与成本联合派单 · 计算留痕</h2><span class="pill" style="margin-left:auto">规则 V3 · 2026-10-15 生效 · 权重合计 100%</span></div>
+            <div class="eval">
+              <div class="ev"><div class="t">能力匹配 25%</div><div class="s num">100</div><div class="d">MF2204 深松机 4 行，宽度 3.0m 满足 ≥2.5m</div></div>
+              <div class="ev"><div class="t">资质有效期 15%</div><div class="s num">92</div><div class="d">操作证 2027-06-30 到期，余 241 天</div></div>
+              <div class="ev"><div class="t">空闲时段 20%</div><div class="s num">85</div><div class="d">11-02 全天无重叠</div></div>
+              <div class="ev"><div class="t">到场距离 15%</div><div class="s num">68</div><div class="d">12.4km，附加费 8.40 元</div></div>
+              <div class="ev"><div class="t">历史油耗 10%</div><div class="s num">88</div><div class="d">近 6 月均值 2.18 L/亩</div></div>
+              <div class="ev"><div class="t">准时率 15%</div><div class="s num">94</div><div class="d">近 20 单准时 19 单</div></div>
+            </div>
+            <div class="res">
+              <div class="grade">综合得分<b class="num">86.4</b></div>
+              <div class="exp">
+                <b>结果等级：推荐</b>（≥80 推荐 / 60–79 可选 / &lt;60 不推荐）<br>
+                主要影响因素：能力匹配满分、准时率高；拖累项为到场距离（12.4km，得分 68）。<br>
+                未满足条件：无。可改进项：与其他北岭地块合并出车可降低单位距离成本约 0.9 元/亩。
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="mini">
+                <thead><tr><th>记录类型</th><th>得分/结果</th><th>操作人</th><th>原因</th><th>时间</th></tr></thead>
+                <tbody>
+                  <tr><td>系统计算（原始）</td><td class="num">86.4 / 推荐</td><td>规则引擎</td><td>—</td><td class="num">2026-10-28 09:20:11</td></tr>
+                  <tr><td>人工确认</td><td class="num">86.4 / 推荐</td><td>陈志远</td><td>采纳系统推荐组合，无需调整</td><td class="num">2026-10-28 09:34:02</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note" style="font-size:12px;color:var(--c-text-3);margin-top:8px">原始计算结果不可覆盖；如人工改派，将新增一条调整记录并填写原因（≥5 字）。</div>
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="card" style="margin-bottom:12px">
+            <h2 style="margin-bottom:12px">应收明细</h2>
+            <div class="kvlist">
+              <div><span>作业费（89.6 亩 × 78.00）</span><b>6,988.80</b></div>
+              <div><span>路程附加费</span><b>8.40</b></div>
+              <div><span>加急费</span><b>0.00</b></div>
+              <div><span>返工减免</span><b>-137.00</b></div>
+              <div style="border-top:1px solid var(--c-line);margin-top:8px;padding-top:8px"><span>应收合计</span><b style="color:var(--c-primary);font-size:16px">6,860.20</b></div>
+            </div>
+            <div class="amount" style="margin-top:10px"><span>已收</span><b style="font-size:16px;color:var(--c-success)">0.00</b><span>未收</span><b style="font-size:16px;color:var(--c-danger)">6,860.20</b></div>
+            <div class="note">返工减免：南侧 0.8 亩重耕一次，按 50% 计减 137.00 元，已在验收记录中留痕。</div>
+          </div>
+          <div class="card">
+            <h2 style="margin-bottom:10px">验收操作</h2>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button class="btn">确认验收并生成应收</button>
+              <button class="btn ghost">要求返工</button>
+              <button class="btn danger">退回作业记录</button>
+            </div>
+            <div class="note">返工与退回均需填写原因（≥5 字）；已结算订单不可改金额，减免只记线下调整单。</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/shell.js"></script>
+<script>renderShell({name:'陈志远',role:'调度员',avatar:'陈'});</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>农机手作业页（移动端）</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  body{background:#E8EDF0}
+  .stage{padding:24px;display:grid;grid-template-columns:1fr 390px;gap:32px;max-width:1320px;margin:0 auto;align-items:start}
+  .side-note h1{font-size:20px;margin-bottom:6px}
+  .side-note .sub{font-size:13px;color:var(--c-text-2);line-height:22px;max-width:520px}
+  .side-note ul{margin:18px 0 0;padding-left:18px;font-size:13px;color:var(--c-text-2);line-height:26px}
+  .card-s{background:#fff;border:1px solid var(--c-line);border-radius:8px;padding:14px 16px;margin-top:16px;font-size:13px;color:var(--c-text-2);line-height:22px;max-width:520px}
+</style>
+</head>
+<body data-role="farmer" data-nav="portal" data-crumb="移动端 / <b>农机手作业页</b>">
+<div class="stage">
+  <div class="side-note">
+    <h1>农机手作业页 · 移动优先</h1>
+    <div class="sub">农机手在田间操作，页面按 390px 宽度设计：顶部固定编号/状态/负责人，中部为分组信息与现场录入，底部用时间轴呈现执行与异常记录。</div>
+    <div class="card-s">
+      <b style="color:var(--c-primary)">交互要点</b>
+      <ul style="margin:8px 0 0;padding-left:16px">
+        <li>点击区 ≥44px，主操作固定在底部安全区</li>
+        <li>到场 / 开工 / 完工三个动作各留一条带时间戳的记录</li>
+        <li>现场图片走拍照上传，不填图片地址</li>
+        <li>实际面积与报价面积偏差触发二次确认提示</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="phone-top">
+      <div class="n">DO-20261028-021 · 待作业</div>
+      <h2>深耕整地 · 北岭三号地</h2>
+      <div style="font-size:12px;color:rgba(255,255,255,.72);margin-top:4px">王建国 · 86.5 亩 · 11-02 08:00 前到场</div>
+    </div>
+    <div class="phone-body">
+      <div class="mcard">
+        <div class="r1"><span class="tag run">作业中</span><span>已开始 1 小时 12 分</span></div>
+        <div class="rows" style="margin-top:8px">
+          机具：<b>鲁-01 麦赛福格森 MF2204</b><br>
+          机手：<b>张国庆</b> · 操作证至 2027-06-30<br>
+          要求深度：<b>≥28cm</b> · 作业宽度 3.0m
+        </div>
+      </div>
+
+      <div class="mcard">
+        <h3>现场录入</h3>
+        <div class="rows">
+          实际面积 <b>44.2 亩</b>（分次作业累计）<br>
+          油耗 <b>96.5 L</b> → 2.18 L/亩<br>
+          工时 <b>1.2 h</b>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+          <button class="btn ghost" style="height:40px;justify-content:center">上传现场照片</button>
+          <button class="btn ghost" style="height:40px;justify-content:center">记录异常</button>
+        </div>
+        <div class="thumbs" style="margin-top:10px">
+          <div class="thumb" style="width:64px;height:64px">作业前<span>before.jpg</span></div>
+          <div class="thumb" style="width:64px;height:64px">作业中<span>doing.jpg</span></div>
+          <div class="thumb" style="width:64px;height:64px;border-style:dashed;background:#fff">＋</div>
+        </div>
+      </div>
+
+      <div class="mcard">
+        <h3 style="margin-bottom:8px">执行记录</h3>
+        <div class="timeline" style="padding-left:20px">
+          <div class="tl now"><b>开工</b><div class="meta">张国庆 · 11-02 08:06:22</div><p>到场后检查机具，开始作业。</p></div>
+          <div class="tl"><b>到场</b><div class="meta">张国庆 · 11-02 07:52:10</div><p>到场 12.4km，签到成功。</p></div>
+          <div class="tl"><b>接单</b><div class="meta">张国庆 · 11-01 18:20:41</div><p>调度员陈志远派单，推荐得分 86.4。</p></div>
+        </div>
+      </div>
+
+      <div class="mcard" style="border-color:#F0DFBE;background:#FBF7EC">
+        <div class="r1" style="color:#8A6415">面积偏差提示</div>
+        <div style="font-size:13px;line-height:21px;color:#6E4A0C;margin-top:6px">当前累计 44.2 亩，预计完工 89.6 亩，超报价面积 3.6%，超过 3% 阈值，需农户二次确认后方可结算。</div>
+      </div>
+    </div>
+    <div class="phone-bar">
+      <button class="btn ghost">上报异常</button>
+      <button class="btn">完工并提交</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
